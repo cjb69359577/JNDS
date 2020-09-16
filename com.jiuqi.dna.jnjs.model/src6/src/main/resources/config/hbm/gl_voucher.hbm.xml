@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hibernate.org/xsd/hibernate-mapping
+		http://www.hibernate.org/xsd/hibernate-mapping/hibernate-mapping-4.0.xsd">
+    <class name="com.jiuqi.jnds.cfpl6.entity.GLVoucher" table="gl_voucher">
+        <id name="recid" type="uuid-binary" column="recid" length="16"/>
+        <version name="recver" type="long"/>
+        <property name="vchrnum" type="integer" column="vchrnum" not-null="false"/>
+        <property name="acctyear" type="integer" column="acctyear" index="idx_year_period" not-null="false"/>
+        <property name="acctperiod" type="integer" column="acctperiod" index="idx_year_period" not-null="false"/>
+        <property name="unitid" type="uuid-binary" column="unitid" length="16" not-null="false"/>
+        <property name="createdate" type="java.sql.Timestamp" column="createdate" not-null="false"/>
+        <property name="createtime" type="java.sql.Timestamp" column="createtime" not-null="false"/>
+    </class>
+</hibernate-mapping>

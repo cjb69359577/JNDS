@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dna>
+	<publish>
+		<services>
+			<service class="com.jiuqi.dna.jnjs.service.MdServices" space="vacomm/Mdservice"/>
+			<service space="dna/jnds" class="com.jiuqi.dna.jnjs.service.SaveServic" />
+			<!-- service space="dna/core" class="com.jiuqi.dna.core.XXService" -->
+		</services>
+		
+		<orms>
+			<!-- orm space="dna/core" class="com.jiuqi.dna.core.XXORM" -->
+		</orms>
+		
+		<commands>
+			<!-- command space="dna/core" class="com.jiuqi.dna.core.XXCommand" -->
+		</commands>
+		
+		<querys>
+			<!-- query space="dna/core" class="com.jiuqi.dna.core.XXQuery" -->
+		</querys>
+		
+		<tables>
+			<!--table space="dna/core" class="com.jiuqi.dna.core.impl.TD_BundleBin" /-->
+		</tables>
+		
+		<ui-entrys>
+			<!--uientry class="com.jiuqi.dna.bap.workflowmanager.define.ui.DemoApplicationUIEntry" name="workflowdefine">
+				</uientry-->
+		</ui-entrys>
+		
+		<pages>
+			<!--page space="mydemo" name="testtemplate" class="com.jiuqi.dna.ui.template.launch.TemplatePage" /-->
+		</pages>
+		
+		<ui-stylesheets>
+			<!-- stylesheet name="stylesheet" title="stylesheet" path="com/jiuqi/dna/ui/demo/stylesheet.css" -->
+		</ui-stylesheets>
+		
+		<portlets>
+			<!-- portlet name="portlet" class="com.jiuqi.dna.ui.XXPortlet" -->
+		</portlets>
+	</publish>
+	<servlets>
+	     <!--重算余额表接口-->
+		 <servlet space="dna/sjzx" path="/api/VNRecalculation/*" class="com.jiuqi.dna.jnjs.Servlet.RebuildVoucherNumServlet" />
+		 <!--  收入支出固定表-->
+		 <servlet space="dna/sjzx" path="/api/SrZcgdbServlet/*" class="com.jiuqi.dna.jnjs.Servlet.SrZcgdbServlet" />
+		  <!-- 车辆情况表 -->
+		 <servlet space="dna/sjzx" path="/api/ClqkServlet/*" class="com.jiuqi.dna.jnjs.Servlet.ClqkServlet" />
+		   <!-- 固定和无形资产存量情况表 -->
+	     <servlet space="dna/sjzx" path="/api/Gdzc_wxzcServlet/*" class="com.jiuqi.dna.jnjs.Servlet.Gdzc_wxzcServlet" />
+	      <!-- 收支分析-每月收支情况分析 -->
+		 <servlet space="dna/sjzx" path="/api/MySZqkfxServlet/*" class="com.jiuqi.dna.jnjs.Servlet.MySZqkfxServlet" />
+		 <!-- 三公经费 -->
+		 <servlet space="dna/sjzx" path="/api/SgjffxServlet/*" class="com.jiuqi.dna.jnjs.Servlet.SgjffxServlet" />
+		  <!-- 项目支出-项目支出进度前10  -->
+		 <servlet space="dna/sjzx" path="/api/XmzcJdServlet/*" class="com.jiuqi.dna.jnjs.Servlet.XmzcJdServlet" />
+		  <!-- 资产类别分布情况 -->
+		 <servlet space="dna/sjzx" path="/api/QueryAssetClassDistributedServlet/*" class="com.jiuqi.dna.jnjs.Servlet.QueryAssetClassDistributedServlet" />
+		 <!-- 资产类别分布情况 -->
+	     <servlet space="dna/sjzx" path="/api/QueryAssetUsageStatisticsServlet/*" class="com.jiuqi.dna.jnjs.Servlet.QueryAssetUsageStatisticsServlet" />
+	      <!-- 公共servlet，一键维护数据 -->
+		 <servlet space="dna/sjzx" path="/api/CommonServlet/*" class="com.jiuqi.dna.jnjs.Servlet.CommonServlet" />
+		 <!-- 报表一键取数 -->
+		 <servlet space="dna/sjzx" path="/api/CalculationServlet/*" class="com.jiuqi.dna.jnjs.Servlet.CalculationServlet" />
+		 <servlet space="dna/sjzx" path="/api/XmzcServlet/*" class="com.jiuqi.dna.jnjs.Servlet.XmzcServlet" />
+		 <!-- 导入 -->
+		 <servlet space="dna/sjzx" path="/api/ImportServlet/*" class="com.jiuqi.dna.jnjs.Servlet.ImportServlet" />
+		 
+		  <!-- 接口 -->
+		 <servlet space="dna/sjzx" path="/competition/VNRecalculation/*" class="com.jiuqi.dna.jnjs.Servlet.VNRecalculation" />
+		 <servlet space="dna/sjzx" path="/competition/calculation/*" class="com.jiuqi.dna.jnjs.Servlet.Calculation" />
+    </servlets>
+</dna>

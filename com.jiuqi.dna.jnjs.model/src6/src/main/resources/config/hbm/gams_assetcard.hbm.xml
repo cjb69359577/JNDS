@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hibernate.org/xsd/hibernate-mapping
+		http://www.hibernate.org/xsd/hibernate-mapping/hibernate-mapping-4.0.xsd">
+    <class name="com.jiuqi.jnds.cfpl6.entity.AssetCard" table="gams_assetcard">
+        <id name="recid" type="uuid-binary" column="recid" length="16"/>
+        <version name="recver" type="long"/>
+        <property name="billcode" type="string" column="billcode" length="60" not-null="false"/>
+        <property name="objectid" type="uuid-binary" column="objectid" length="16" not-null="false"/>
+        <property name="orgunit" type="uuid-binary" column="orgunit" length="16" not-null="false"/>
+        <property name="jiaz" type="double" column="jiaz" precision="19" scale="6" not-null="false"/>
+        <property name="leijzj" type="double" column="leijzj" precision="19" scale="6" not-null="false"/>
+        <property name="jingz" type="double" column="jingz" precision="19" scale="6" not-null="false"/>
+        <property name="shul" type="integer" column="shul" not-null="false" />
+        <property name="mianj" type="double" column="mianj" precision="19" scale="6" not-null="false"/>
+        <property name="zymj" type="double" column="zymj" precision="19" scale="6" not-null="false"/>
+        <property name="xzmj" type="double" column="xzmj" precision="19" scale="6" not-null="false"/>
+        <property name="czjmj" type="double" column="czjmj" precision="19" scale="6" not-null="false"/>
+        <property name="dczmj" type="double" column="dczmj" precision="19" scale="6" not-null="false"/>
+        <property name="zyjz" type="double" column="zyjz" precision="19" scale="6" not-null="false"/>
+        <property name="xzjz" type="double" column="xzjz" precision="19" scale="6" not-null="false"/>
+        <property name="czjjz" type="double" column="czjjz" precision="19" scale="6" not-null="false"/>
+        <property name="dczjz" type="double" column="dczjz" precision="19" scale="6" not-null="false"/>
+        <property name="jizrq" type="java.sql.Timestamp" column="jizrq" not-null="false"/>
+        <property name="syzk" type="uuid-binary" column="syzk" not-null="false"/>
+        <property name="zifl" type="uuid-binary" column="zifl" not-null="false"/>
+        <property name="clyt" type="uuid-binary" column="clyt" not-null="false"/>
+        <property name="cheph" type="string" column="cheph" length="300" not-null="false"/>
+        <property name="cardstate" type="string" column="cardstate" length="2" not-null="false"/>
+    </class>
+</hibernate-mapping>

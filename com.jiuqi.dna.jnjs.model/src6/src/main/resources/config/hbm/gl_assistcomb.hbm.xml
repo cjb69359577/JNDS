@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hibernate.org/xsd/hibernate-mapping
+		http://www.hibernate.org/xsd/hibernate-mapping/hibernate-mapping-4.0.xsd">
+    <class name="com.jiuqi.jnds.cfpl6.entity.GLAssistComb" table="gl_assistcomb">
+        <id name="recid" type="uuid-binary" column="recid" length="16"/>
+        <version name="recver" type="long"/>
+        <property name="acctyear" type="integer" column="acctyear" not-null="false"/>
+        <property name="projectid" type="uuid-binary" column="projectid" length="16" not-null="false"/>
+        <property name="expendfuncclassid" type="uuid-binary" column="expendfuncclassid" length="16" not-null="false"/>
+        <property name="expendeconclassid" type="uuid-binary" column="expendeconclassid" length="16" not-null="false"/>
+    </class>
+</hibernate-mapping>

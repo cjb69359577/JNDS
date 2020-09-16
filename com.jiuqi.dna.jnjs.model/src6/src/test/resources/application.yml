@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: cfpl6
+  datasource:
+    username: cfpl6
+    password: cfpl6
+    url: jdbc:oracle:thin:@10.2.8.78:1521:orcl
+    driverClassName: oracle.jdbc.OracleDriver
+  jpa:
+    properties:
+      hibernate.jdbc.batch_size: 50
+      hibernate.hbm2ddl.auto: update
+      hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
+      hibernate.show_sql: true
+      hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 200MB
+
+hibernate:
+  mappingLocations:
+    - classpath*: /config/system/hbm/*.xml
+    - classpath*: /config/hbm/*.xml
+    
+# logger
+logging:
+    config: classpath:logback.xml
+    
+server:
+  port: 8080

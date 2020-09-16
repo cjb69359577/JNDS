@@ -1,0 +1,641 @@
+package com.jiuqi.jnds.cfpl6.cache;
+
+public class QuerySqlProvider {
+	private static String sql_srzcgdb;
+	private static String sql_xmzcjsmxb;
+	private static String sql_clqkb;
+	private static String sql_gdhwxzcclqkb;
+	
+	static {
+		StringBuilder srzcgdb = new StringBuilder();
+		srzcgdb.append("select sum(case when acc.stdcode like '600101%' or acc.stdcode like '600101%' then i.credit - i.debit else 0 end) as c4, ");
+		srzcgdb.append("       sum(case when acc.stdcode like '6201%' then i.credit - i.debit else 0 end) as c5, ");
+		srzcgdb.append("       sum(case when acc.stdcode like '6101%' then i.credit - i.debit else 0 end) as c6, ");
+		srzcgdb.append("       sum(case when acc.stdcode like '6401%' then i.credit - i.debit else 0 end) as c7, ");
+		srzcgdb.append("       sum(case when acc.stdcode like '6301%' then i.credit - i.debit else 0 end) as c8, ");
+		srzcgdb.append("       sum(case when acc.stdcode like '6501%' or acc.stdcode like '6601%' or acc.stdcode like '6602%'or acc.stdcode like '6609%' then i.credit - i.debit else 0 end) as c9, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '201%' then i.debit - i.credit  else 0 end) as f4, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '202%' then i.debit - i.credit  else 0 end) as f5, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '203%' then i.debit - i.credit  else 0 end) as f6, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '204%' then i.debit - i.credit  else 0 end) as f7, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '205%' then i.debit - i.credit  else 0 end) as f8, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '206%' then i.debit - i.credit  else 0 end) as f9, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '207%' then i.debit - i.credit  else 0 end) as f10, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '208%' then i.debit - i.credit  else 0 end) as f11, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '210%' then i.debit - i.credit  else 0 end) as f12, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '211%' then i.debit - i.credit  else 0 end) as f13, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '212%' then i.debit - i.credit  else 0 end) as f14, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '213%' then i.debit - i.credit  else 0 end) as f15, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '214%' then i.debit - i.credit  else 0 end) as f16, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '215%' then i.debit - i.credit  else 0 end) as f17, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '216%' then i.debit - i.credit  else 0 end) as f18, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '217%' then i.debit - i.credit  else 0 end) as f19, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '219%' then i.debit - i.credit  else 0 end) as f20, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '220%' then i.debit - i.credit  else 0 end) as f21, ");
+		srzcgdb.append("       sum(case when (acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') and cl.stdcode like '221%' then i.debit - i.credit  else 0 end) as f22 ");
+		srzcgdb.append("from ( ");
+		srzcgdb.append("  select i.subjectid,i.asscombid,sum(i.debit) as debit,sum(i.credit) as credit ");
+		srzcgdb.append("  from GL_VOUCHERITEM i  ");
+		srzcgdb.append("  where i.subjectid in (select acc.recid from MD_ACCOUNTSUBJECT acc  ");
+		srzcgdb.append("                                         where acc.stdcode like '600101%' or acc.stdcode like '600101%' or acc.stdcode like '6201%' or acc.stdcode like '6101%' or acc.stdcode like '6401%' or acc.stdcode like '6201%' ");
+		srzcgdb.append("                                               or acc.stdcode like '6501%' or acc.stdcode like '7201%' or acc.stdcode like '7301%' or acc.stdcode like '7401%'or acc.stdcode like '7501%') ");
+		srzcgdb.append("    and i.vchrid in (select h.recid from GL_VOUCHER h where h.acctyear = '2019' and h.acctperiod <> 0 and h.unitid = (select m.recid from MD_ORG m where m.stdcode = '000223')) ");
+		srzcgdb.append("  group by i.subjectid,i.asscombid ");
+		srzcgdb.append(") i ");
+		srzcgdb.append("left join MD_ACCOUNTSUBJECT acc on i.subjectid = acc.recid ");
+		srzcgdb.append("left join GL_ASSISTCOMB cobm on i.asscombid = cobm.recid ");
+		srzcgdb.append("left join MD_EXPENDFUNCCLASS cl on cobm.expendfuncclassid = cl.recid ");
+		sql_srzcgdb = srzcgdb.toString();
+		
+		StringBuilder xmzcjsmxb = new StringBuilder();
+		xmzcjsmxb.append("with detail as ");
+		xmzcjsmxb.append("(select ");
+		xmzcjsmxb.append("r.funccode funccode, r.funcname funcname, r.projectcode projectcode, r.projectname projectname, ");
+		xmzcjsmxb.append("(r.gzflzcjbgz + r.gzflzcjtbt + r.gzflzcjj + r.gzflzchsbzf + r.gzflzcjxgz + r.gzflzcjgsydwjbylbxjf + ");
+		xmzcjsmxb.append("r.gzflzczynjjf + r.gzflzczgjbylbxjf + r.gzflzcgwyylbzjf + r.gzflzcqtshbzjf + r.gzflzczfgjj + r.gzflzcylf + ");
+		xmzcjsmxb.append("r.gzflzcqtgzflzc + r.sphfwzcbgf + r.sphfwzcysf + r.sphfwzczxf + r.sphfwzcsxf + r.sphfwzcsf + r.sphfwzcdf + ");
+		xmzcjsmxb.append("r.sphfwzcydf + r.sphfwzcqnf + r.sphfwzcwyglf + r.sphfwzcclf + r.sphfwzcygcgjfy + r.sphfwzcwxhf + r.sphfwzczlf + ");
+		xmzcjsmxb.append("r.sphfwzchyf + r.sphfwzcpxf + r.sphfwzcgwjdf + r.sphfwzczyclf + r.sphfwzcbzgzf + r.sphfwzczyrlf + r.sphfwzclwf + ");
+		xmzcjsmxb.append("r.sphfwzcwtywf + r.sphfwzcghjf + r.sphfwzcflf + r.sphfwzcgwycyxwhf + r.sphfwzcqtjtfy + r.sphfwzcsjjfjfy + ");
+		xmzcjsmxb.append("r.sphfwzcqtsphfwzc + r.dgrhjtdbzlxf + r.dgrhjtdbztxf + r.dgrhjtdbztzyf + r.dgrhjtdbzfxj + r.dgrhjtdbzshbz + ");
+		xmzcjsmxb.append("r.dgrhjtdbzjjf + r.dgrhjtdbzylfbz + r.dgrhjtdbzzxj + r.dgrhjtdbzjlj + r.dgrhjtdbzgrnyscbt + r.dgrhjtdbzqtdgrhjtdbz + ");
+		xmzcjsmxb.append("r.zwlxjfyzcgnzwfx + r.zwlxjfyzcgwzwfx + r.zwlxjfyzcgnzwfxfy + r.zwlxjfyzcgwzwfxfy + r.zbxzcjbjsfwjzwgj + ");
+		xmzcjsmxb.append("r.zbxzcjbjsbgsbgz + r.zbxzcjbjszysbgz + r.zbxzcjbjsjcssjs + r.zbxzcjbjsdxxs + r.zbxzcjbjsxxwljrjgzgx + ");
+		xmzcjsmxb.append("r.zbxzcjbjswzcb + r.zbxzcjbjsgwycgz + r.zbxzcjbjsqtjtgjgz + r.zbxzcjbjswwhclpgz + r.zbxzcjbjswxzcgz + ");
+		xmzcjsmxb.append("r.zbxzcjbjsqtjbjszc + r.zbxzcfwjzwgj + r.zbxzcbgsbgz + r.zbxzczysbgz + r.zbxzcjcssjs + r.zbxzcdxxs + ");
+		xmzcjsmxb.append("r.zbxzcxxwljrjgzgx + r.zbxzcwzcb + r.zbxzctdbc + r.zbxzcazbz + r.zbxzcdsfzwhqmbc + r.zbxzccqbc + ");
+		xmzcjsmxb.append("r.zbxzcgwycgz + r.zbxzcqtjtgjgz + r.zbxzcwwhclpgz + r.zbxzcwxzcgz + r.zbxzcqtzbxzc + r.dqybzjbjszbjzr + ");
+		xmzcjsmxb.append("r.dqybzjbjsqtdqybz + r.dqybzzbjzr + r.dqybzzftzjjgqtz + r.dqybzfybt + r.dqybzlxbt + r.dqybzqtdqybz + ");
+		xmzcjsmxb.append("r.dshbzjjbzdshbxjjbz + r.dshbzjjbzbcqgshbzjj) hej, ");
+		xmzcjsmxb.append("(r.gzflzcjbgz + r.gzflzcjtbt + r.gzflzcjj + r.gzflzchsbzf + r.gzflzcjxgz + r.gzflzcjgsydwjbylbxjf + ");
+		xmzcjsmxb.append("r.gzflzczynjjf + r.gzflzczgjbylbxjf + r.gzflzcgwyylbzjf + r.gzflzcqtshbzjf + r.gzflzczfgjj + r.gzflzcylf + ");
+		xmzcjsmxb.append("r.gzflzcqtgzflzc) gzflzcxj, ");
+		xmzcjsmxb.append("r.gzflzcjbgz gzflzcjbgz, r.gzflzcjtbt gzflzcjtbt, r.gzflzcjj gzflzcjj, r.gzflzchsbzf gzflzchsbzf, ");
+		xmzcjsmxb.append("r.gzflzcjxgz gzflzcjxgz, r.gzflzcjgsydwjbylbxjf gzflzcjgsydwjbylbxjf, r.gzflzczynjjf gzflzczynjjf, ");
+		xmzcjsmxb.append("r.gzflzczgjbylbxjf gzflzczgjbylbxjf, r.gzflzcgwyylbzjf gzflzcgwyylbzjf, r.gzflzcqtshbzjf gzflzcqtshbzjf, ");
+		xmzcjsmxb.append("r.gzflzczfgjj gzflzczfgjj, r.gzflzcylf gzflzcylf, r.gzflzcqtgzflzc gzflzcqtgzflzc, ");
+		xmzcjsmxb.append("(r.sphfwzcbgf + r.sphfwzcysf + r.sphfwzczxf + r.sphfwzcsxf + r.sphfwzcsf + r.sphfwzcdf + ");
+		xmzcjsmxb.append("r.sphfwzcydf + r.sphfwzcqnf + r.sphfwzcwyglf + r.sphfwzcclf + r.sphfwzcygcgjfy + r.sphfwzcwxhf + ");
+		xmzcjsmxb.append("r.sphfwzczlf + r.sphfwzchyf + r.sphfwzcpxf + r.sphfwzcgwjdf + r.sphfwzczyclf + r.sphfwzcbzgzf + ");
+		xmzcjsmxb.append("r.sphfwzczyrlf + r.sphfwzclwf + r.sphfwzcwtywf + r.sphfwzcghjf + r.sphfwzcflf + r.sphfwzcgwycyxwhf + ");
+		xmzcjsmxb.append("r.sphfwzcqtjtfy + r.sphfwzcsjjfjfy + r.sphfwzcqtsphfwzc) sphfwzcxj, ");
+		xmzcjsmxb.append("r.sphfwzcbgf sphfwzcbgf, r.sphfwzcysf sphfwzcysf, r.sphfwzczxf sphfwzczxf, r.sphfwzcsxf sphfwzcsxf, ");
+		xmzcjsmxb.append("r.sphfwzcsf sphfwzcsf, r.sphfwzcdf sphfwzcdf, r.sphfwzcydf sphfwzcydf, r.sphfwzcqnf sphfwzcqnf, ");
+		xmzcjsmxb.append("r.sphfwzcwyglf sphfwzcwyglf, r.sphfwzcclf sphfwzcclf, r.sphfwzcygcgjfy sphfwzcygcgjfy, ");
+		xmzcjsmxb.append("r.sphfwzcwxhf sphfwzcwxhf, r.sphfwzczlf sphfwzczlf, r.sphfwzchyf sphfwzchyf, r.sphfwzcpxf sphfwzcpxf, ");
+		xmzcjsmxb.append("r.sphfwzcgwjdf sphfwzcgwjdf, r.sphfwzczyclf sphfwzczyclf, r.sphfwzcbzgzf sphfwzcbzgzf, r.sphfwzczyrlf sphfwzczyrlf, ");
+		xmzcjsmxb.append("r.sphfwzclwf sphfwzclwf, r.sphfwzcwtywf sphfwzcwtywf, r.sphfwzcghjf sphfwzcghjf, r.sphfwzcflf sphfwzcflf, ");
+		xmzcjsmxb.append("r.sphfwzcgwycyxwhf sphfwzcgwycyxwhf, r.sphfwzcqtjtfy sphfwzcqtjtfy, r.sphfwzcsjjfjfy sphfwzcsjjfjfy, ");
+		xmzcjsmxb.append("r.sphfwzcqtsphfwzc sphfwzcqtsphfwzc, ");
+		xmzcjsmxb.append("(r.dgrhjtdbzlxf + r.dgrhjtdbztxf + r.dgrhjtdbztzyf + r.dgrhjtdbzfxj + r.dgrhjtdbzshbz + r.dgrhjtdbzjjf + ");
+		xmzcjsmxb.append("r.dgrhjtdbzylfbz + r.dgrhjtdbzzxj + r.dgrhjtdbzjlj + r.dgrhjtdbzgrnyscbt + r.dgrhjtdbzqtdgrhjtdbz) dgrhjtdbzxj, ");
+		xmzcjsmxb.append("r.dgrhjtdbzlxf dgrhjtdbzlxf, r.dgrhjtdbztxf dgrhjtdbztxf, r.dgrhjtdbztzyf dgrhjtdbztzyf, r.dgrhjtdbzfxj dgrhjtdbzfxj, ");
+		xmzcjsmxb.append("r.dgrhjtdbzshbz dgrhjtdbzshbz, r.dgrhjtdbzjjf dgrhjtdbzjjf, r.dgrhjtdbzylfbz dgrhjtdbzylfbz, r.dgrhjtdbzzxj dgrhjtdbzzxj, ");
+		xmzcjsmxb.append("r.dgrhjtdbzjlj dgrhjtdbzjlj, r.dgrhjtdbzgrnyscbt dgrhjtdbzgrnyscbt, r.dgrhjtdbzqtdgrhjtdbz dgrhjtdbzqtdgrhjtdbz, ");
+		xmzcjsmxb.append("(r.zwlxjfyzcgnzwfx + r.zwlxjfyzcgwzwfx + r.zwlxjfyzcgnzwfxfy + r.zwlxjfyzcgwzwfxfy) zwlxjfyzcxj, ");
+		xmzcjsmxb.append("r.zwlxjfyzcgnzwfx zwlxjfyzcgnzwfx, r.zwlxjfyzcgwzwfx zwlxjfyzcgwzwfx, r.zwlxjfyzcgnzwfxfy zwlxjfyzcgnzwfxfy, r.zwlxjfyzcgwzwfxfy zwlxjfyzcgwzwfxfy, ");
+		xmzcjsmxb.append("(r.zbxzcjbjsfwjzwgj + r.zbxzcjbjsbgsbgz + r.zbxzcjbjszysbgz + r.zbxzcjbjsjcssjs + r.zbxzcjbjsdxxs + r.zbxzcjbjsxxwljrjgzgx + ");
+		xmzcjsmxb.append("r.zbxzcjbjswzcb + r.zbxzcjbjsgwycgz + r.zbxzcjbjsqtjtgjgz + r.zbxzcjbjswwhclpgz + r.zbxzcjbjswxzcgz + r.zbxzcjbjsqtjbjszc) zbxzcjbjsxj, ");
+		xmzcjsmxb.append("r.zbxzcjbjsfwjzwgj zbxzcjbjsfwjzwgj, r.zbxzcjbjsbgsbgz zbxzcjbjsbgsbgz, r.zbxzcjbjszysbgz zbxzcjbjszysbgz, ");
+		xmzcjsmxb.append("r.zbxzcjbjsjcssjs zbxzcjbjsjcssjs, r.zbxzcjbjsdxxs zbxzcjbjsdxxs, r.zbxzcjbjsxxwljrjgzgx zbxzcjbjsxxwljrjgzgx, ");
+		xmzcjsmxb.append("r.zbxzcjbjswzcb zbxzcjbjswzcb, r.zbxzcjbjsgwycgz zbxzcjbjsgwycgz, r.zbxzcjbjsqtjtgjgz zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("r.zbxzcjbjswwhclpgz zbxzcjbjswwhclpgz, r.zbxzcjbjswxzcgz zbxzcjbjswxzcgz, r.zbxzcjbjsqtjbjszc zbxzcjbjsqtjbjszc, ");
+		xmzcjsmxb.append("(r.zbxzcfwjzwgj + r.zbxzcbgsbgz + r.zbxzczysbgz + r.zbxzcjcssjs + r.zbxzcdxxs + r.zbxzcxxwljrjgzgx + ");
+		xmzcjsmxb.append("r.zbxzcwzcb + r.zbxzctdbc + r.zbxzcazbz + r.zbxzcdsfzwhqmbc + r.zbxzccqbc + r.zbxzcgwycgz + r.zbxzcqtjtgjgz + ");
+		xmzcjsmxb.append("r.zbxzcwwhclpgz + r.zbxzcwxzcgz + r.zbxzcqtzbxzc) zbxzcxj, ");
+		xmzcjsmxb.append("r.zbxzcfwjzwgj zbxzcfwjzwgj, r.zbxzcbgsbgz zbxzcbgsbgz, r.zbxzczysbgz zbxzczysbgz, r.zbxzcjcssjs zbxzcjcssjs, ");
+		xmzcjsmxb.append("r.zbxzcdxxs zbxzcdxxs, r.zbxzcxxwljrjgzgx zbxzcxxwljrjgzgx, r.zbxzcwzcb zbxzcwzcb, r.zbxzctdbc zbxzctdbc, ");
+		xmzcjsmxb.append("r.zbxzcazbz zbxzcazbz, r.zbxzcdsfzwhqmbc zbxzcdsfzwhqmbc, r.zbxzccqbc zbxzccqbc, r.zbxzcgwycgz zbxzcgwycgz, ");
+		xmzcjsmxb.append("r.zbxzcqtjtgjgz zbxzcqtjtgjgz, r.zbxzcwwhclpgz zbxzcwwhclpgz, r.zbxzcwxzcgz zbxzcwxzcgz, r.zbxzcqtzbxzc zbxzcqtzbxzc, ");
+		xmzcjsmxb.append("(r.dqybzjbjszbjzr + r.dqybzjbjsqtdqybz) dqybzjbjsxj, ");
+		xmzcjsmxb.append("r.dqybzjbjszbjzr dqybzjbjszbjzr, r.dqybzjbjsqtdqybz dqybzjbjsqtdqybz, ");
+		xmzcjsmxb.append("(r.dqybzzbjzr + r.dqybzzftzjjgqtz + r.dqybzfybt + r.dqybzlxbt + r.dqybzqtdqybz) dqybzxj, ");
+		xmzcjsmxb.append("r.dqybzzbjzr dqybzzbjzr, r.dqybzzftzjjgqtz dqybzzftzjjgqtz, r.dqybzfybt dqybzfybt, r.dqybzlxbt dqybzlxbt, r.dqybzqtdqybz dqybzqtdqybz, ");
+		xmzcjsmxb.append("(r.dshbzjjbzdshbxjjbz + r.dshbzjjbzbcqgshbzjj) dshbzjjbzxj, ");
+		xmzcjsmxb.append("r.dshbzjjbzdshbxjjbz dshbzjjbzdshbxjjbz, r.dshbzjjbzbcqgshbzjj dshbzjjbzbcqgshbzjj ");
+		xmzcjsmxb.append("from ");
+		xmzcjsmxb.append("(select ");
+		xmzcjsmxb.append("func.stdcode funccode, func.stdname funcname, proj.stdcode projectcode, proj.stdname projectname, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30101%' then t.debit - t.credit else 0 end) gzflzcjbgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30102%' then t.debit - t.credit else 0 end) gzflzcjtbt, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30103%' then t.debit - t.credit else 0 end) gzflzcjj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30106%' then t.debit - t.credit else 0 end) gzflzchsbzf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30107%' then t.debit - t.credit else 0 end) gzflzcjxgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30108%' then t.debit - t.credit else 0 end) gzflzcjgsydwjbylbxjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30109%' then t.debit - t.credit else 0 end) gzflzczynjjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30110%' then t.debit - t.credit else 0 end) gzflzczgjbylbxjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30111%' then t.debit - t.credit else 0 end) gzflzcgwyylbzjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30112%' then t.debit - t.credit else 0 end) gzflzcqtshbzjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30113%' then t.debit - t.credit else 0 end) gzflzczfgjj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30114%' then t.debit - t.credit else 0 end) gzflzcylf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30199%' then t.debit - t.credit else 0 end) gzflzcqtgzflzc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30201%' then t.debit - t.credit else 0 end) sphfwzcbgf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30202%' then t.debit - t.credit else 0 end) sphfwzcysf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30203%' then t.debit - t.credit else 0 end) sphfwzczxf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30204%' then t.debit - t.credit else 0 end) sphfwzcsxf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30205%' then t.debit - t.credit else 0 end) sphfwzcsf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30206%' then t.debit - t.credit else 0 end) sphfwzcdf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30207%' then t.debit - t.credit else 0 end) sphfwzcydf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30208%' then t.debit - t.credit else 0 end) sphfwzcqnf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30209%' then t.debit - t.credit else 0 end) sphfwzcwyglf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30211%' then t.debit - t.credit else 0 end) sphfwzcclf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30212%' then t.debit - t.credit else 0 end) sphfwzcygcgjfy, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30213%' then t.debit - t.credit else 0 end) sphfwzcwxhf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30214%' then t.debit - t.credit else 0 end) sphfwzczlf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30215%' then t.debit - t.credit else 0 end) sphfwzchyf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30216%' then t.debit - t.credit else 0 end) sphfwzcpxf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30217%' then t.debit - t.credit else 0 end) sphfwzcgwjdf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30218%' then t.debit - t.credit else 0 end) sphfwzczyclf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30224%' then t.debit - t.credit else 0 end) sphfwzcbzgzf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30225%' then t.debit - t.credit else 0 end) sphfwzczyrlf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30226%' then t.debit - t.credit else 0 end) sphfwzclwf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30227%' then t.debit - t.credit else 0 end) sphfwzcwtywf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30228%' then t.debit - t.credit else 0 end) sphfwzcghjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30229%' then t.debit - t.credit else 0 end) sphfwzcflf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30231%' then t.debit - t.credit else 0 end) sphfwzcgwycyxwhf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30239%' then t.debit - t.credit else 0 end) sphfwzcqtjtfy, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30240%' then t.debit - t.credit else 0 end) sphfwzcsjjfjfy, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30299%' then t.debit - t.credit else 0 end) sphfwzcqtsphfwzc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30301%' then t.debit - t.credit else 0 end) dgrhjtdbzlxf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30302%' then t.debit - t.credit else 0 end) dgrhjtdbztxf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30303%' then t.debit - t.credit else 0 end) dgrhjtdbztzyf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30304%' then t.debit - t.credit else 0 end) dgrhjtdbzfxj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30305%' then t.debit - t.credit else 0 end) dgrhjtdbzshbz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30306%' then t.debit - t.credit else 0 end) dgrhjtdbzjjf, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30307%' then t.debit - t.credit else 0 end) dgrhjtdbzylfbz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30308%' then t.debit - t.credit else 0 end) dgrhjtdbzzxj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30309%' then t.debit - t.credit else 0 end) dgrhjtdbzjlj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30310%' then t.debit - t.credit else 0 end) dgrhjtdbzgrnyscbt, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30399%' then t.debit - t.credit else 0 end) dgrhjtdbzqtdgrhjtdbz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30701%' then t.debit - t.credit else 0 end) zwlxjfyzcgnzwfx, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30702%' then t.debit - t.credit else 0 end) zwlxjfyzcgwzwfx, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30703%' then t.debit - t.credit else 0 end) zwlxjfyzcgnzwfxfy, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30704%' then t.debit - t.credit else 0 end) zwlxjfyzcgwzwfxfy, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30901%' then t.debit - t.credit else 0 end) zbxzcjbjsfwjzwgj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30902%' then t.debit - t.credit else 0 end) zbxzcjbjsbgsbgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30903%' then t.debit - t.credit else 0 end) zbxzcjbjszysbgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30905%' then t.debit - t.credit else 0 end) zbxzcjbjsjcssjs, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30906%' then t.debit - t.credit else 0 end) zbxzcjbjsdxxs, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30907%' then t.debit - t.credit else 0 end) zbxzcjbjsxxwljrjgzgx, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30908%' then t.debit - t.credit else 0 end) zbxzcjbjswzcb, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30913%' then t.debit - t.credit else 0 end) zbxzcjbjsgwycgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30919%' then t.debit - t.credit else 0 end) zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30921%' then t.debit - t.credit else 0 end) zbxzcjbjswwhclpgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30922%' then t.debit - t.credit else 0 end) zbxzcjbjswxzcgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '30999%' then t.debit - t.credit else 0 end) zbxzcjbjsqtjbjszc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31001%' then t.debit - t.credit else 0 end) zbxzcfwjzwgj, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31002%' then t.debit - t.credit else 0 end) zbxzcbgsbgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31003%' then t.debit - t.credit else 0 end) zbxzczysbgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31005%' then t.debit - t.credit else 0 end) zbxzcjcssjs, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31006%' then t.debit - t.credit else 0 end) zbxzcdxxs, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31007%' then t.debit - t.credit else 0 end) zbxzcxxwljrjgzgx, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31008%' then t.debit - t.credit else 0 end) zbxzcwzcb, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31009%' then t.debit - t.credit else 0 end) zbxzctdbc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31010%' then t.debit - t.credit else 0 end) zbxzcazbz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31011%' then t.debit - t.credit else 0 end) zbxzcdsfzwhqmbc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31012%' then t.debit - t.credit else 0 end) zbxzccqbc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31013%' then t.debit - t.credit else 0 end) zbxzcgwycgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31019%' then t.debit - t.credit else 0 end) zbxzcqtjtgjgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31021%' then t.debit - t.credit else 0 end) zbxzcwwhclpgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31022%' then t.debit - t.credit else 0 end) zbxzcwxzcgz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31099%' then t.debit - t.credit else 0 end) zbxzcqtzbxzc, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31101%' then t.debit - t.credit else 0 end) dqybzjbjszbjzr, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31199%' then t.debit - t.credit else 0 end) dqybzjbjsqtdqybz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31201%' then t.debit - t.credit else 0 end) dqybzzbjzr, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31203%' then t.debit - t.credit else 0 end) dqybzzftzjjgqtz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31204%' then t.debit - t.credit else 0 end) dqybzfybt, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31205%' then t.debit - t.credit else 0 end) dqybzlxbt, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31299%' then t.debit - t.credit else 0 end) dqybzqtdqybz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31302%' then t.debit - t.credit else 0 end) dshbzjjbzdshbxjjbz, ");
+		xmzcjsmxb.append("(case when econ.stdcode like '31303%' then t.debit - t.credit else 0 end) dshbzjjbzbcqgshbzjj ");
+		xmzcjsmxb.append("from ");
+		xmzcjsmxb.append("(select ");
+		xmzcjsmxb.append("voucheritem.asscombid asscombid, coalesce(sum(voucheritem.debit), 0) debit, coalesce(sum(voucheritem.credit), 0) credit ");
+		xmzcjsmxb.append("from ");
+		xmzcjsmxb.append("gl_voucheritem voucheritem ");
+		xmzcjsmxb.append("where ");
+		xmzcjsmxb.append("voucheritem.vchrid in ");
+		xmzcjsmxb.append("(select voucher.recid from gl_voucher voucher where voucher.unitid = (select org.recid from md_org org where org.stdcode = '000223') and voucher.acctyear = 2019 and voucher.acctperiod >= 1 and voucher.acctperiod <= 12) ");
+		xmzcjsmxb.append("and voucheritem.subjectid in ");
+		xmzcjsmxb.append("(select subject.recid from md_accountsubject subject where subject.stdcode like '72010102%' or subject.stdcode like '72010202%' or subject.stdcode like '72010302%' or subject.stdcode like '79010102%') ");
+		xmzcjsmxb.append("group by voucheritem.asscombid) t ");
+		xmzcjsmxb.append("left join gl_assistcomb comb on comb.recid = t.asscombid ");
+		xmzcjsmxb.append("left join md_project proj on proj.recid = comb.projectid ");
+		xmzcjsmxb.append("left join md_expendeconclass econ on econ.recid = comb.expendeconclassid ");
+		xmzcjsmxb.append("left join md_expendfuncclass func on func.recid = comb.expendfuncclassid ");
+		xmzcjsmxb.append("where func.recid is not null and proj.recid is not null) r) ");
+		xmzcjsmxb.append("select ");
+		xmzcjsmxb.append("t.funccode zhicgnflkmbm, t.funcname zhicgnflkmmc, t.projectcode xiangmdm, t.projectname xiangmmc, t.hej hej, t.gzflzcxj gzflzcxj, ");
+		xmzcjsmxb.append("t.gzflzcjbgz gzflzcjbgz, t.gzflzcjtbt gzflzcjtbt, t.gzflzcjj gzflzcjj, t.gzflzchsbzf gzflzchsbzf, t.gzflzcjxgz gzflzcjxgz, t.gzflzcjgsydwjbylbxjf gzflzcjgsydwjbylbxjf,");
+		xmzcjsmxb.append(" t.gzflzczynjjf gzflzczynjjf, t.gzflzczgjbylbxjf gzflzczgjbylbxjf, t.gzflzcgwyylbzjf gzflzcgwyylbzjf, t.gzflzcqtshbzjf gzflzcqtshbzjf, ");
+		xmzcjsmxb.append("t.gzflzczfgjj gzflzczfgjj, t.gzflzcylf gzflzcylf, t.gzflzcqtgzflzc gzflzcqtgzflzc, t.sphfwzcxj sphfwzcxj, t.sphfwzcbgf sphfwzcbgf, ");
+		xmzcjsmxb.append("t.sphfwzcysf sphfwzcysf, t.sphfwzczxf sphfwzczxf, t.sphfwzcsxf sphfwzcsxf, t.sphfwzcsf sphfwzcsf, t.sphfwzcdf sphfwzcdf, t.sphfwzcydf sphfwzcydf, ");
+		xmzcjsmxb.append("t.sphfwzcqnf sphfwzcqnf, t.sphfwzcwyglf sphfwzcwyglf, t.sphfwzcclf sphfwzcclf, t.sphfwzcygcgjfy sphfwzcygcgjfy, t.sphfwzcwxhf sphfwzcwxhf, ");
+		xmzcjsmxb.append("t.sphfwzczlf sphfwzczlf, t.sphfwzchyf sphfwzchyf, t.sphfwzcpxf sphfwzcpxf, t.sphfwzcgwjdf sphfwzcgwjdf, t.sphfwzczyclf sphfwzczyclf, ");
+		xmzcjsmxb.append("t.sphfwzcbzgzf sphfwzcbzgzf, t.sphfwzczyrlf sphfwzczyrlf, t.sphfwzclwf sphfwzclwf, t.sphfwzcwtywf sphfwzcwtywf, t.sphfwzcghjf sphfwzcghjf, ");
+		xmzcjsmxb.append("t.sphfwzcflf sphfwzcflf, t.sphfwzcgwycyxwhf sphfwzcgwycyxwhf, t.sphfwzcqtjtfy sphfwzcqtjtfy, t.sphfwzcsjjfjfy sphfwzcsjjfjfy, ");
+		xmzcjsmxb.append("t.sphfwzcqtsphfwzc sphfwzcqtsphfwzc, t.dgrhjtdbzxj dgrhjtdbzxj, t.dgrhjtdbzlxf dgrhjtdbzlxf, t.dgrhjtdbztxf dgrhjtdbztxf, ");
+		xmzcjsmxb.append("t.dgrhjtdbztzyf dgrhjtdbztzyf, t.dgrhjtdbzfxj dgrhjtdbzfxj, t.dgrhjtdbzshbz dgrhjtdbzshbz, t.dgrhjtdbzjjf dgrhjtdbzjjf, ");
+		xmzcjsmxb.append("t.dgrhjtdbzylfbz dgrhjtdbzylfbz, t.dgrhjtdbzzxj dgrhjtdbzzxj, t.dgrhjtdbzjlj dgrhjtdbzjlj, t.dgrhjtdbzgrnyscbt dgrhjtdbzgrnyscbt, ");
+		xmzcjsmxb.append("t.dgrhjtdbzqtdgrhjtdbz dgrhjtdbzqtdgrhjtdbz, t.zwlxjfyzcxj zwlxjfyzcxj, t.zwlxjfyzcgnzwfx zwlxjfyzcgnzwfx, t.zwlxjfyzcgwzwfx zwlxjfyzcgwzwfx, ");
+		xmzcjsmxb.append("t.zwlxjfyzcgnzwfxfy zwlxjfyzcgnzwfxfy, t.zwlxjfyzcgwzwfxfy zwlxjfyzcgwzwfxfy, t.zbxzcjbjsxj zbxzcjbjsxj, t.zbxzcjbjsfwjzwgj zbxzcjbjsfwjzwgj, ");
+		xmzcjsmxb.append("t.zbxzcjbjsbgsbgz zbxzcjbjsbgsbgz, t.zbxzcjbjszysbgz zbxzcjbjszysbgz, t.zbxzcjbjsjcssjs zbxzcjbjsjcssjs, t.zbxzcjbjsdxxs zbxzcjbjsdxxs, ");
+		xmzcjsmxb.append("t.zbxzcjbjsxxwljrjgzgx zbxzcjbjsxxwljrjgzgx, t.zbxzcjbjswzcb zbxzcjbjswzcb, t.zbxzcjbjsgwycgz zbxzcjbjsgwycgz, t.zbxzcjbjsqtjtgjgz zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("t.zbxzcjbjswwhclpgz zbxzcjbjswwhclpgz, t.zbxzcjbjswxzcgz zbxzcjbjswxzcgz, t.zbxzcjbjsqtjbjszc zbxzcjbjsqtjbjszc, t.zbxzcxj zbxzcxj, ");
+		xmzcjsmxb.append("t.zbxzcfwjzwgj zbxzcfwjzwgj, t.zbxzcbgsbgz zbxzcbgsbgz, t.zbxzczysbgz zbxzczysbgz, t.zbxzcjcssjs zbxzcjcssjs, t.zbxzcdxxs zbxzcdxxs, ");
+		xmzcjsmxb.append("t.zbxzcxxwljrjgzgx zbxzcxxwljrjgzgx, t.zbxzcwzcb zbxzcwzcb, t.zbxzctdbc zbxzctdbc, t.zbxzcazbz zbxzcazbz, t.zbxzcdsfzwhqmbc zbxzcdsfzwhqmbc, ");
+		xmzcjsmxb.append("t.zbxzccqbc zbxzccqbc, t.zbxzcgwycgz zbxzcgwycgz, t.zbxzcqtjtgjgz zbxzcqtjtgjgz, t.zbxzcwwhclpgz zbxzcwwhclpgz, t.zbxzcwxzcgz zbxzcwxzcgz, ");
+		xmzcjsmxb.append("t.zbxzcqtzbxzc zbxzcqtzbxzc, t.dqybzjbjsxj dqybzjbjsxj, t.dqybzjbjszbjzr dqybzjbjszbjzr, t.dqybzjbjsqtdqybz dqybzjbjsqtdqybz, t.dqybzxj dqybzxj, ");
+		xmzcjsmxb.append("t.dqybzzbjzr dqybzzbjzr, t.dqybzzftzjjgqtz dqybzzftzjjgqtz, t.dqybzfybt dqybzfybt, t.dqybzlxbt dqybzlxbt, t.dqybzqtdqybz dqybzqtdqybz, ");
+		xmzcjsmxb.append("t.dshbzjjbzxj dshbzjjbzxj, t.dshbzjjbzdshbxjjbz dshbzjjbzdshbxjjbz, t.dshbzjjbzbcqgshbzjj dshbzjjbzbcqgshbzjj ");
+		xmzcjsmxb.append("from ( ");
+		xmzcjsmxb.append("select ");
+		xmzcjsmxb.append("funcclass.stdcode funccode, funcclass.stdname funcname, to_char('') projectcode, to_char('') projectname, coalesce(sum(d.hej), 0) hej, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcxj), 0) gzflzcxj, coalesce(sum(d.gzflzcjbgz), 0) gzflzcjbgz, coalesce(sum(d.gzflzcjtbt), 0) gzflzcjtbt, coalesce(sum(d.gzflzcjj), 0) gzflzcjj, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzchsbzf), 0) gzflzchsbzf, coalesce(sum(d.gzflzcjxgz), 0) gzflzcjxgz, coalesce(sum(d.gzflzcjgsydwjbylbxjf), 0) gzflzcjgsydwjbylbxjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzczynjjf), 0) gzflzczynjjf, coalesce(sum(d.gzflzczgjbylbxjf), 0) gzflzczgjbylbxjf, coalesce(sum(d.gzflzcgwyylbzjf), 0) gzflzcgwyylbzjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcqtshbzjf), 0) gzflzcqtshbzjf, coalesce(sum(d.gzflzczfgjj), 0) gzflzczfgjj, coalesce(sum(d.gzflzcylf), 0) gzflzcylf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcqtgzflzc), 0) gzflzcqtgzflzc, coalesce(sum(d.sphfwzcxj), 0) sphfwzcxj, coalesce(sum(d.sphfwzcbgf), 0) sphfwzcbgf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcysf), 0) sphfwzcysf, coalesce(sum(d.sphfwzczxf), 0) sphfwzczxf, coalesce(sum(d.sphfwzcsxf), 0) sphfwzcsxf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcsf), 0) sphfwzcsf, coalesce(sum(d.sphfwzcdf), 0) sphfwzcdf, coalesce(sum(d.sphfwzcydf), 0) sphfwzcydf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcqnf), 0) sphfwzcqnf, coalesce(sum(d.sphfwzcwyglf), 0) sphfwzcwyglf, coalesce(sum(d.sphfwzcclf), 0) sphfwzcclf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcygcgjfy), 0) sphfwzcygcgjfy, coalesce(sum(d.sphfwzcwxhf), 0) sphfwzcwxhf, coalesce(sum(d.sphfwzczlf), 0) sphfwzczlf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzchyf), 0) sphfwzchyf, coalesce(sum(d.sphfwzcpxf), 0) sphfwzcpxf, coalesce(sum(d.sphfwzcgwjdf), 0) sphfwzcgwjdf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzczyclf), 0) sphfwzczyclf, coalesce(sum(d.sphfwzcbzgzf), 0) sphfwzcbzgzf, coalesce(sum(d.sphfwzczyrlf), 0) sphfwzczyrlf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzclwf), 0) sphfwzclwf, coalesce(sum(d.sphfwzcwtywf), 0) sphfwzcwtywf, coalesce(sum(d.sphfwzcghjf), 0) sphfwzcghjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcflf), 0) sphfwzcflf, coalesce(sum(d.sphfwzcgwycyxwhf), 0) sphfwzcgwycyxwhf, coalesce(sum(d.sphfwzcqtjtfy), 0) sphfwzcqtjtfy, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcsjjfjfy), 0) sphfwzcsjjfjfy, coalesce(sum(d.sphfwzcqtsphfwzc), 0) sphfwzcqtsphfwzc, coalesce(sum(d.dgrhjtdbzxj), 0) dgrhjtdbzxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzlxf), 0) dgrhjtdbzlxf, coalesce(sum(d.dgrhjtdbztxf), 0) dgrhjtdbztxf, coalesce(sum(d.dgrhjtdbztzyf), 0) dgrhjtdbztzyf, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzfxj), 0) dgrhjtdbzfxj, coalesce(sum(d.dgrhjtdbzshbz), 0) dgrhjtdbzshbz, coalesce(sum(d.dgrhjtdbzjjf), 0) dgrhjtdbzjjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzylfbz), 0) dgrhjtdbzylfbz, coalesce(sum(d.dgrhjtdbzzxj), 0) dgrhjtdbzzxj, coalesce(sum(d.dgrhjtdbzjlj), 0) dgrhjtdbzjlj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzgrnyscbt), 0) dgrhjtdbzgrnyscbt, coalesce(sum(d.dgrhjtdbzqtdgrhjtdbz), 0) dgrhjtdbzqtdgrhjtdbz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zwlxjfyzcxj), 0) zwlxjfyzcxj, coalesce(sum(d.zwlxjfyzcgnzwfx), 0) zwlxjfyzcgnzwfx, coalesce(sum(d.zwlxjfyzcgwzwfx), 0) zwlxjfyzcgwzwfx, ");
+		xmzcjsmxb.append("coalesce(sum(d.zwlxjfyzcgnzwfxfy), 0) zwlxjfyzcgnzwfxfy, coalesce(sum(d.zwlxjfyzcgwzwfxfy), 0) zwlxjfyzcgwzwfxfy, coalesce(sum(d.zbxzcjbjsxj), 0) zbxzcjbjsxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjsfwjzwgj), 0) zbxzcjbjsfwjzwgj, coalesce(sum(d.zbxzcjbjsbgsbgz), 0) zbxzcjbjsbgsbgz, coalesce(sum(d.zbxzcjbjszysbgz), 0) zbxzcjbjszysbgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjsjcssjs), 0) zbxzcjbjsjcssjs, coalesce(sum(d.zbxzcjbjsdxxs), 0) zbxzcjbjsdxxs, coalesce(sum(d.zbxzcjbjsxxwljrjgzgx), 0) zbxzcjbjsxxwljrjgzgx, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjswzcb), 0) zbxzcjbjswzcb, coalesce(sum(d.zbxzcjbjsgwycgz), 0) zbxzcjbjsgwycgz, coalesce(sum(d.zbxzcjbjsqtjtgjgz), 0) zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjswwhclpgz), 0) zbxzcjbjswwhclpgz, coalesce(sum(d.zbxzcjbjswxzcgz), 0) zbxzcjbjswxzcgz, coalesce(sum(d.zbxzcjbjsqtjbjszc), 0) zbxzcjbjsqtjbjszc, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcxj), 0) zbxzcxj, coalesce(sum(d.zbxzcfwjzwgj), 0) zbxzcfwjzwgj, coalesce(sum(d.zbxzcbgsbgz), 0) zbxzcbgsbgz, coalesce(sum(d.zbxzczysbgz), 0) zbxzczysbgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjcssjs), 0) zbxzcjcssjs, coalesce(sum(d.zbxzcdxxs), 0) zbxzcdxxs, coalesce(sum(d.zbxzcxxwljrjgzgx), 0) zbxzcxxwljrjgzgx, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcwzcb), 0) zbxzcwzcb, coalesce(sum(d.zbxzctdbc), 0) zbxzctdbc, coalesce(sum(d.zbxzcazbz), 0) zbxzcazbz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcdsfzwhqmbc), 0) zbxzcdsfzwhqmbc, coalesce(sum(d.zbxzccqbc), 0) zbxzccqbc, coalesce(sum(d.zbxzcgwycgz), 0) zbxzcgwycgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcqtjtgjgz), 0) zbxzcqtjtgjgz, coalesce(sum(d.zbxzcwwhclpgz), 0) zbxzcwwhclpgz, coalesce(sum(d.zbxzcwxzcgz), 0) zbxzcwxzcgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcqtzbxzc), 0) zbxzcqtzbxzc, coalesce(sum(d.dqybzjbjsxj), 0) dqybzjbjsxj, coalesce(sum(d.dqybzjbjszbjzr), 0) dqybzjbjszbjzr, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzjbjsqtdqybz), 0) dqybzjbjsqtdqybz, coalesce(sum(d.dqybzxj), 0) dqybzxj, coalesce(sum(d.dqybzzbjzr), 0) dqybzzbjzr, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzzftzjjgqtz), 0) dqybzzftzjjgqtz, coalesce(sum(d.dqybzfybt), 0) dqybzfybt, coalesce(sum(d.dqybzlxbt), 0) dqybzlxbt, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzqtdqybz), 0) dqybzqtdqybz, coalesce(sum(d.dshbzjjbzxj), 0) dshbzjjbzxj, coalesce(sum(d.dshbzjjbzdshbxjjbz), 0) dshbzjjbzdshbxjjbz, ");
+		xmzcjsmxb.append("coalesce(sum(d.dshbzjjbzbcqgshbzjj), 0) dshbzjjbzbcqgshbzjj ");
+		xmzcjsmxb.append("from ");
+		xmzcjsmxb.append("md_expendfuncclass funcclass ");
+		xmzcjsmxb.append("left join detail d on d.funccode like concat(funcclass.stdcode, '%') ");
+		xmzcjsmxb.append("where funcclass.acctyear = 2019 and length(funcclass.stdcode) = 3 ");
+		xmzcjsmxb.append("group by funcclass.stdcode, funcclass.stdname ");
+		xmzcjsmxb.append("union all ");
+		xmzcjsmxb.append("select ");
+		xmzcjsmxb.append("funcclass.stdcode funccode, funcclass.stdname funcname, to_char('') projectcode, to_char('') projectname, coalesce(sum(d.hej), 0) hej, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcxj), 0) gzflzcxj, coalesce(sum(d.gzflzcjbgz), 0) gzflzcjbgz, coalesce(sum(d.gzflzcjtbt), 0) gzflzcjtbt, coalesce(sum(d.gzflzcjj), 0) gzflzcjj, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzchsbzf), 0) gzflzchsbzf, coalesce(sum(d.gzflzcjxgz), 0) gzflzcjxgz, coalesce(sum(d.gzflzcjgsydwjbylbxjf), 0) gzflzcjgsydwjbylbxjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzczynjjf), 0) gzflzczynjjf, coalesce(sum(d.gzflzczgjbylbxjf), 0) gzflzczgjbylbxjf, coalesce(sum(d.gzflzcgwyylbzjf), 0) gzflzcgwyylbzjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcqtshbzjf), 0) gzflzcqtshbzjf, coalesce(sum(d.gzflzczfgjj), 0) gzflzczfgjj, coalesce(sum(d.gzflzcylf), 0) gzflzcylf, ");
+		xmzcjsmxb.append("coalesce(sum(d.gzflzcqtgzflzc), 0) gzflzcqtgzflzc, coalesce(sum(d.sphfwzcxj), 0) sphfwzcxj, coalesce(sum(d.sphfwzcbgf), 0) sphfwzcbgf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcysf), 0) sphfwzcysf, coalesce(sum(d.sphfwzczxf), 0) sphfwzczxf, coalesce(sum(d.sphfwzcsxf), 0) sphfwzcsxf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcsf), 0) sphfwzcsf, coalesce(sum(d.sphfwzcdf), 0) sphfwzcdf, coalesce(sum(d.sphfwzcydf), 0) sphfwzcydf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcqnf), 0) sphfwzcqnf, coalesce(sum(d.sphfwzcwyglf), 0) sphfwzcwyglf, coalesce(sum(d.sphfwzcclf), 0) sphfwzcclf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcygcgjfy), 0) sphfwzcygcgjfy, coalesce(sum(d.sphfwzcwxhf), 0) sphfwzcwxhf, coalesce(sum(d.sphfwzczlf), 0) sphfwzczlf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzchyf), 0) sphfwzchyf, coalesce(sum(d.sphfwzcpxf), 0) sphfwzcpxf, coalesce(sum(d.sphfwzcgwjdf), 0) sphfwzcgwjdf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzczyclf), 0) sphfwzczyclf, coalesce(sum(d.sphfwzcbzgzf), 0) sphfwzcbzgzf, coalesce(sum(d.sphfwzczyrlf), 0) sphfwzczyrlf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzclwf), 0) sphfwzclwf, coalesce(sum(d.sphfwzcwtywf), 0) sphfwzcwtywf, coalesce(sum(d.sphfwzcghjf), 0) sphfwzcghjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcflf), 0) sphfwzcflf, coalesce(sum(d.sphfwzcgwycyxwhf), 0) sphfwzcgwycyxwhf, coalesce(sum(d.sphfwzcqtjtfy), 0) sphfwzcqtjtfy, ");
+		xmzcjsmxb.append("coalesce(sum(d.sphfwzcsjjfjfy), 0) sphfwzcsjjfjfy, coalesce(sum(d.sphfwzcqtsphfwzc), 0) sphfwzcqtsphfwzc, coalesce(sum(d.dgrhjtdbzxj), 0) dgrhjtdbzxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzlxf), 0) dgrhjtdbzlxf, coalesce(sum(d.dgrhjtdbztxf), 0) dgrhjtdbztxf, coalesce(sum(d.dgrhjtdbztzyf), 0) dgrhjtdbztzyf, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzfxj), 0) dgrhjtdbzfxj, coalesce(sum(d.dgrhjtdbzshbz), 0) dgrhjtdbzshbz, coalesce(sum(d.dgrhjtdbzjjf), 0) dgrhjtdbzjjf, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzylfbz), 0) dgrhjtdbzylfbz, coalesce(sum(d.dgrhjtdbzzxj), 0) dgrhjtdbzzxj, coalesce(sum(d.dgrhjtdbzjlj), 0) dgrhjtdbzjlj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dgrhjtdbzgrnyscbt), 0) dgrhjtdbzgrnyscbt, coalesce(sum(d.dgrhjtdbzqtdgrhjtdbz), 0) dgrhjtdbzqtdgrhjtdbz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zwlxjfyzcxj), 0) zwlxjfyzcxj, coalesce(sum(d.zwlxjfyzcgnzwfx), 0) zwlxjfyzcgnzwfx, coalesce(sum(d.zwlxjfyzcgwzwfx), 0) zwlxjfyzcgwzwfx, ");
+		xmzcjsmxb.append("coalesce(sum(d.zwlxjfyzcgnzwfxfy), 0) zwlxjfyzcgnzwfxfy, coalesce(sum(d.zwlxjfyzcgwzwfxfy), 0) zwlxjfyzcgwzwfxfy, coalesce(sum(d.zbxzcjbjsxj), 0) zbxzcjbjsxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjsfwjzwgj), 0) zbxzcjbjsfwjzwgj, coalesce(sum(d.zbxzcjbjsbgsbgz), 0) zbxzcjbjsbgsbgz, coalesce(sum(d.zbxzcjbjszysbgz), 0) zbxzcjbjszysbgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjsjcssjs), 0) zbxzcjbjsjcssjs, coalesce(sum(d.zbxzcjbjsdxxs), 0) zbxzcjbjsdxxs, coalesce(sum(d.zbxzcjbjsxxwljrjgzgx), 0) zbxzcjbjsxxwljrjgzgx, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjswzcb), 0) zbxzcjbjswzcb, coalesce(sum(d.zbxzcjbjsgwycgz), 0) zbxzcjbjsgwycgz, coalesce(sum(d.zbxzcjbjsqtjtgjgz), 0) zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcjbjswwhclpgz), 0) zbxzcjbjswwhclpgz, coalesce(sum(d.zbxzcjbjswxzcgz), 0) zbxzcjbjswxzcgz, coalesce(sum(d.zbxzcjbjsqtjbjszc), 0) zbxzcjbjsqtjbjszc, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcxj), 0) zbxzcxj, coalesce(sum(d.zbxzcfwjzwgj), 0) zbxzcfwjzwgj, coalesce(sum(d.zbxzcbgsbgz), 0) zbxzcbgsbgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzczysbgz), 0) zbxzczysbgz, coalesce(sum(d.zbxzcjcssjs), 0) zbxzcjcssjs, coalesce(sum(d.zbxzcdxxs), 0) zbxzcdxxs, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcxxwljrjgzgx), 0) zbxzcxxwljrjgzgx, coalesce(sum(d.zbxzcwzcb), 0) zbxzcwzcb, coalesce(sum(d.zbxzctdbc), 0) zbxzctdbc, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcazbz), 0) zbxzcazbz, coalesce(sum(d.zbxzcdsfzwhqmbc), 0) zbxzcdsfzwhqmbc, coalesce(sum(d.zbxzccqbc), 0) zbxzccqbc, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcgwycgz), 0) zbxzcgwycgz, coalesce(sum(d.zbxzcqtjtgjgz), 0) zbxzcqtjtgjgz, coalesce(sum(d.zbxzcwwhclpgz), 0) zbxzcwwhclpgz, ");
+		xmzcjsmxb.append("coalesce(sum(d.zbxzcwxzcgz), 0) zbxzcwxzcgz, coalesce(sum(d.zbxzcqtzbxzc), 0) zbxzcqtzbxzc, coalesce(sum(d.dqybzjbjsxj), 0) dqybzjbjsxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzjbjszbjzr), 0) dqybzjbjszbjzr, coalesce(sum(d.dqybzjbjsqtdqybz), 0) dqybzjbjsqtdqybz, coalesce(sum(d.dqybzxj), 0) dqybzxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzzbjzr), 0) dqybzzbjzr, coalesce(sum(d.dqybzzftzjjgqtz), 0) dqybzzftzjjgqtz, coalesce(sum(d.dqybzfybt), 0) dqybzfybt, ");
+		xmzcjsmxb.append("coalesce(sum(d.dqybzlxbt), 0) dqybzlxbt, coalesce(sum(d.dqybzqtdqybz), 0) dqybzqtdqybz, coalesce(sum(d.dshbzjjbzxj), 0) dshbzjjbzxj, ");
+		xmzcjsmxb.append("coalesce(sum(d.dshbzjjbzdshbxjjbz), 0) dshbzjjbzdshbxjjbz, coalesce(sum(d.dshbzjjbzbcqgshbzjj), 0) dshbzjjbzbcqgshbzjj ");
+		xmzcjsmxb.append("from ");
+		xmzcjsmxb.append("md_expendfuncclass funcclass ");
+		xmzcjsmxb.append("left join detail d on d.funccode like concat(funcclass.stdcode, '%') ");
+		xmzcjsmxb.append("where funcclass.acctyear = 2019 and length(funcclass.stdcode) = 5 ");
+		xmzcjsmxb.append("group by funcclass.stdcode, funcclass.stdname ");
+		xmzcjsmxb.append("union all ");
+		xmzcjsmxb.append("select ");
+		xmzcjsmxb.append("d.funccode funccode, d.funcname funcname, to_char(d.projectcode) projectcode, to_char(d.projectname) projectname, d.hej hej, ");
+		xmzcjsmxb.append("d.gzflzcxj gzflzcxj, d.gzflzcjbgz gzflzcjbgz, d.gzflzcjtbt gzflzcjtbt, d.gzflzcjj gzflzcjj, d.gzflzchsbzf gzflzchsbzf, d.gzflzcjxgz gzflzcjxgz, ");
+		xmzcjsmxb.append("d.gzflzcjgsydwjbylbxjf gzflzcjgsydwjbylbxjf, d.gzflzczynjjf gzflzczynjjf, d.gzflzczgjbylbxjf gzflzczgjbylbxjf, ");
+		xmzcjsmxb.append("d.gzflzcgwyylbzjf gzflzcgwyylbzjf, d.gzflzcqtshbzjf gzflzcqtshbzjf, d.gzflzczfgjj gzflzczfgjj, d.gzflzcylf gzflzcylf, ");
+		xmzcjsmxb.append("d.gzflzcqtgzflzc gzflzcqtgzflzc, d.sphfwzcxj sphfwzcxj, d.sphfwzcbgf sphfwzcbgf, d.sphfwzcysf sphfwzcysf, d.sphfwzczxf sphfwzczxf, ");
+		xmzcjsmxb.append("d.sphfwzcsxf sphfwzcsxf, d.sphfwzcsf sphfwzcsf, d.sphfwzcdf sphfwzcdf, d.sphfwzcydf sphfwzcydf, d.sphfwzcqnf sphfwzcqnf, ");
+		xmzcjsmxb.append("d.sphfwzcwyglf sphfwzcwyglf, d.sphfwzcclf sphfwzcclf, d.sphfwzcygcgjfy sphfwzcygcgjfy, d.sphfwzcwxhf sphfwzcwxhf, ");
+		xmzcjsmxb.append("d.sphfwzczlf sphfwzczlf, d.sphfwzchyf sphfwzchyf, d.sphfwzcpxf sphfwzcpxf, d.sphfwzcgwjdf sphfwzcgwjdf, d.sphfwzczyclf sphfwzczyclf, ");
+		xmzcjsmxb.append("d.sphfwzcbzgzf sphfwzcbzgzf, d.sphfwzczyrlf sphfwzczyrlf, d.sphfwzclwf sphfwzclwf, d.sphfwzcwtywf sphfwzcwtywf, d.sphfwzcghjf sphfwzcghjf, ");
+		xmzcjsmxb.append("d.sphfwzcflf sphfwzcflf, d.sphfwzcgwycyxwhf sphfwzcgwycyxwhf, d.sphfwzcqtjtfy sphfwzcqtjtfy, d.sphfwzcsjjfjfy sphfwzcsjjfjfy, ");
+		xmzcjsmxb.append("d.sphfwzcqtsphfwzc sphfwzcqtsphfwzc, d.dgrhjtdbzxj dgrhjtdbzxj, d.dgrhjtdbzlxf dgrhjtdbzlxf, d.dgrhjtdbztxf dgrhjtdbztxf, ");
+		xmzcjsmxb.append("d.dgrhjtdbztzyf dgrhjtdbztzyf, d.dgrhjtdbzfxj dgrhjtdbzfxj, d.dgrhjtdbzshbz dgrhjtdbzshbz, d.dgrhjtdbzjjf dgrhjtdbzjjf, ");
+		xmzcjsmxb.append("d.dgrhjtdbzylfbz dgrhjtdbzylfbz, d.dgrhjtdbzzxj dgrhjtdbzzxj, d.dgrhjtdbzjlj dgrhjtdbzjlj, d.dgrhjtdbzgrnyscbt dgrhjtdbzgrnyscbt, ");
+		xmzcjsmxb.append("d.dgrhjtdbzqtdgrhjtdbz dgrhjtdbzqtdgrhjtdbz, d.zwlxjfyzcxj zwlxjfyzcxj, d.zwlxjfyzcgnzwfx zwlxjfyzcgnzwfx, d.zwlxjfyzcgwzwfx zwlxjfyzcgwzwfx, ");
+		xmzcjsmxb.append("d.zwlxjfyzcgnzwfxfy zwlxjfyzcgnzwfxfy, d.zwlxjfyzcgwzwfxfy zwlxjfyzcgwzwfxfy, d.zbxzcjbjsxj zbxzcjbjsxj, d.zbxzcjbjsfwjzwgj zbxzcjbjsfwjzwgj, ");
+		xmzcjsmxb.append("d.zbxzcjbjsbgsbgz zbxzcjbjsbgsbgz, d.zbxzcjbjszysbgz zbxzcjbjszysbgz, d.zbxzcjbjsjcssjs zbxzcjbjsjcssjs, d.zbxzcjbjsdxxs zbxzcjbjsdxxs, ");
+		xmzcjsmxb.append("d.zbxzcjbjsxxwljrjgzgx zbxzcjbjsxxwljrjgzgx, d.zbxzcjbjswzcb zbxzcjbjswzcb, d.zbxzcjbjsgwycgz zbxzcjbjsgwycgz, d.zbxzcjbjsqtjtgjgz zbxzcjbjsqtjtgjgz, ");
+		xmzcjsmxb.append("d.zbxzcjbjswwhclpgz zbxzcjbjswwhclpgz, d.zbxzcjbjswxzcgz zbxzcjbjswxzcgz, d.zbxzcjbjsqtjbjszc zbxzcjbjsqtjbjszc, d.zbxzcxj zbxzcxj, ");
+		xmzcjsmxb.append("d.zbxzcfwjzwgj zbxzcfwjzwgj, d.zbxzcbgsbgz zbxzcbgsbgz, d.zbxzczysbgz zbxzczysbgz, d.zbxzcjcssjs zbxzcjcssjs, d.zbxzcdxxs zbxzcdxxs, ");
+		xmzcjsmxb.append("d.zbxzcxxwljrjgzgx zbxzcxxwljrjgzgx, d.zbxzcwzcb zbxzcwzcb, d.zbxzctdbc zbxzctdbc, d.zbxzcazbz zbxzcazbz, d.zbxzcdsfzwhqmbc zbxzcdsfzwhqmbc, ");
+		xmzcjsmxb.append("d.zbxzccqbc zbxzccqbc, d.zbxzcgwycgz zbxzcgwycgz, d.zbxzcqtjtgjgz zbxzcqtjtgjgz, d.zbxzcwwhclpgz zbxzcwwhclpgz, d.zbxzcwxzcgz zbxzcwxzcgz, ");
+		xmzcjsmxb.append("d.zbxzcqtzbxzc zbxzcqtzbxzc, d.dqybzjbjsxj dqybzjbjsxj, d.dqybzjbjszbjzr dqybzjbjszbjzr, d.dqybzjbjsqtdqybz dqybzjbjsqtdqybz, d.dqybzxj dqybzxj, ");
+		xmzcjsmxb.append("d.dqybzzbjzr dqybzzbjzr, d.dqybzzftzjjgqtz dqybzzftzjjgqtz, d.dqybzfybt dqybzfybt, d.dqybzlxbt dqybzlxbt, d.dqybzqtdqybz dqybzqtdqybz, ");
+		xmzcjsmxb.append("d.dshbzjjbzxj dshbzjjbzxj, d.dshbzjjbzdshbxjjbz dshbzjjbzdshbxjjbz, d.dshbzjjbzbcqgshbzjj dshbzjjbzbcqgshbzjj from detail d ");
+		xmzcjsmxb.append(") t order by t.funccode asc");
+		sql_xmzcjsmxb = xmzcjsmxb.toString();
+		
+		StringBuffer clqkb = new StringBuffer();
+		clqkb.append("select gja.stdname zicfl,ga.billcode zicbh,ga.cheph cheph,ga.jiaz jiaz,ga.leijzj leijzj,ga.jingz jingz,gjs.stdname shiyzk,gjc.stdname chelyt ");
+		clqkb.append("from gams_assetcard ga ");
+		clqkb.append("left join gams_jc_assetclass gja on gja.recid = ga.zifl ");
+		clqkb.append("left join gams_jc_syzk gjs on gjs.recid = ga.syzk ");
+		clqkb.append("left join gams_jc_clytfl gjc on gjc.recid = ga.clyt ");
+		clqkb.append("where ga.cardstate in ('00','02') and to_char(ga.jizrq,'yyyymmdd') <= '20191231' ");
+		clqkb.append("and ( (gja.stdcode > 2030000 and gja.stdcode < 2030800) or gja.stdcode =2039900) ");
+		sql_clqkb = clqkb.toString();
+		
+		StringBuffer gdhwxzcclqkb = new StringBuffer();
+		gdhwxzcclqkb.append("select");
+		// C列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '2%' then 1 else 0 end) as c8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '3%' then 1 else 0 end) as c9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '4%' then 1 else 0 end) as c10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '5%' then 1 else 0 end) as c11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as c12,");
+		// D列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as d6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.jiaz else 0 end) as d7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '2%' then ga.jiaz else 0 end) as d8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '3%' then ga.jiaz else 0 end) as d9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '4%' then ga.jiaz else 0 end) as d10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '5%' then ga.jiaz else 0 end) as d11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as d12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '605%' then ga.jiaz else 0 end) as d13,");
+		// E列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as e6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.leijzj else 0 end) as e7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '2%' then ga.leijzj else 0 end) as e8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '3%' then ga.leijzj else 0 end) as e9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '4%' then ga.leijzj else 0 end) as e10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '5%' then ga.leijzj else 0 end) as e11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as e12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '605%' then ga.leijzj else 0 end) as e13,");
+		// F列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as f6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.jingz else 0 end) as f7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '2%' then ga.jingz else 0 end) as f8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '3%' then ga.jingz else 0 end) as f9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '4%' then ga.jingz else 0 end) as f10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '5%' then ga.jingz else 0 end) as f11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as f12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20181231' and gja.stdcode like '605%' then ga.jingz else 0 end) as f13,");
+		// G列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '2%' then 1 else 0 end) as g8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '3%' then 1 else 0 end) as g9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '4%' then 1 else 0 end) as g10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '5%' then 1 else 0 end) as g11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as g12,");
+		// H列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as h6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.jiaz else 0 end) as h7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '2%' then ga.jiaz else 0 end) as h8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '3%' then ga.jiaz else 0 end) as h9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '4%' then ga.jiaz else 0 end) as h10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '5%' then ga.jiaz else 0 end) as h11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as h12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '605%' then ga.jiaz else 0 end) as h13,");
+		// I列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as i6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.leijzj else 0 end) as i7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '2%' then ga.leijzj else 0 end) as i8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '3%' then ga.leijzj else 0 end) as i9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '4%' then ga.leijzj else 0 end) as i10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '5%' then ga.leijzj else 0 end) as i11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as i12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '605%' then ga.leijzj else 0 end) as i13,");
+		// J列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '1%' or gja.stdcode like '2%' or gja.stdcode like '3%' or gja.stdcode like '4%' or gja.stdcode like '5%' ");
+		gdhwxzcclqkb.append("             or gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as j6,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '101%' or gja.stdcode like '102%' or gja.stdcode like '103%') then ga.jingz else 0 end) as j7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '2%' then ga.jingz else 0 end) as j8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '3%' then ga.jingz else 0 end) as j9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '4%' then ga.jingz else 0 end) as j10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '5%' then ga.jingz else 0 end) as j11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as j12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '605%' then ga.jingz else 0 end) as j13,");
+		// K列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '2%' then 1 else 0 end) as k8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '3%' then 1 else 0 end) as k9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '4%' then 1 else 0 end) as k10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '5%' then 1 else 0 end) as k11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as k12,");
+		// L列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and (gja.stdcode like '101%' or gja.stdcode like '102%') then ga.zyjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '103%' then ga.jiaz else 0 end) as l7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '2%' then ga.jiaz else 0 end) as l8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '3%' then ga.jiaz else 0 end) as l9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '4%' then ga.jiaz else 0 end) as l10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '5%' then ga.jiaz else 0 end) as l11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as l12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '6050411%' then ga.zyjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01'");
+		gdhwxzcclqkb.append("             and gja.stdcode like '605%' and gja.stdcode not like '6050411%' then ga.jiaz else 0 end) as l13,");
+		// M列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '2%' then ga.leijzj else 0 end) as m8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '3%' then ga.leijzj else 0 end) as m9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '4%' then ga.leijzj else 0 end) as m10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '5%' then ga.leijzj else 0 end) as m11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as m12,");
+		// N列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '2%' then ga.jingz else 0 end) as n8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '3%' then ga.jingz else 0 end) as n9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '4%' then ga.jingz else 0 end) as n10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01' and gja.stdcode like '5%' then ga.jingz else 0 end) as n11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '01'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as n12,");
+		// O列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '2%' then 1 else 0 end) as o8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '3%' then 1 else 0 end) as o9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '4%' then 1 else 0 end) as o10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '5%' then 1 else 0 end) as o11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as o12,");
+		// P列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and (gja.stdcode like '101%' or gja.stdcode like '102%') then ga.czjjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '103%' then ga.jiaz else 0 end) as p7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '2%' then ga.jiaz else 0 end) as p8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '3%' then ga.jiaz else 0 end) as p9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '4%' then ga.jiaz else 0 end) as p10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '5%' then ga.jiaz else 0 end) as p11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as p12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '6050411%' then ga.czjjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02'");
+		gdhwxzcclqkb.append("             and gja.stdcode like '605%' and gja.stdcode not like '6050411%' then ga.jiaz else 0 end) as p13,");
+		// Q列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '2%' then ga.leijzj else 0 end) as q8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '3%' then ga.leijzj else 0 end) as q9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '4%' then ga.leijzj else 0 end) as q10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '5%' then ga.leijzj else 0 end) as q11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as q12,");
+		// R列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '2%' then ga.jingz else 0 end) as r8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '3%' then ga.jingz else 0 end) as r9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '4%' then ga.jingz else 0 end) as r10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02' and gja.stdcode like '5%' then ga.jingz else 0 end) as r11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '02'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as r12,");
+		// S列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '2%' then 1 else 0 end) as s8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '3%' then 1 else 0 end) as s9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '4%' then 1 else 0 end) as s10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '5%' then 1 else 0 end) as s11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as s12,");
+		// T列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and (gja.stdcode like '101%' or gja.stdcode like '102%') then ga.xzjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '103%' then ga.jiaz else 0 end) as t7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '2%' then ga.jiaz else 0 end) as t8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '3%' then ga.jiaz else 0 end) as t9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '4%' then ga.jiaz else 0 end) as t10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '5%' then ga.jiaz else 0 end) as t11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as t12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '6050411%' then ga.xzjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03'");
+		gdhwxzcclqkb.append("             and gja.stdcode like '605%' and gja.stdcode not like '6050411%' then ga.jiaz else 0 end) as t13,");
+		// U列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '2%' then ga.leijzj else 0 end) as u8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '3%' then ga.leijzj else 0 end) as u9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '4%' then ga.leijzj else 0 end) as u10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '5%' then ga.leijzj else 0 end) as u11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as u12,");
+		// V列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '2%' then ga.jingz else 0 end) as v8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '3%' then ga.jingz else 0 end) as v9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '4%' then ga.jingz else 0 end) as v10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03' and gja.stdcode like '5%' then ga.jingz else 0 end) as v11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '03'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as v12,");
+		// W列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '2%' then 1 else 0 end) as w8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '3%' then 1 else 0 end) as w9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '4%' then 1 else 0 end) as w10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '5%' then 1 else 0 end) as w11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then 1 else 0 end) as w12,");
+		// X列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and (gja.stdcode like '101%' or gja.stdcode like '102%') then ga.dczjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '103%' then ga.jiaz else 0 end) as x7,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '2%' then ga.jiaz else 0 end) as x8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '3%' then ga.jiaz else 0 end) as x9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '4%' then ga.jiaz else 0 end) as x10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '5%' then ga.jiaz else 0 end) as x11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jiaz else 0 end) as x12,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gja.stdcode like '6050411%' then ga.dczjz else 0 end)");
+		gdhwxzcclqkb.append("             + sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04'");
+		gdhwxzcclqkb.append("             and gja.stdcode like '605%' and gja.stdcode not like '6050411%' then ga.jiaz else 0 end) as x13,");
+		// Y列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '2%' then ga.leijzj else 0 end) as y8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '3%' then ga.leijzj else 0 end) as y9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '4%' then ga.leijzj else 0 end) as y10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '5%' then ga.leijzj else 0 end) as y11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.leijzj else 0 end) as y12,");
+		// Z列
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '2%' then ga.jingz else 0 end) as z8,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '3%' then ga.jingz else 0 end) as z9,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '4%' then ga.jingz else 0 end) as z10,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04' and gja.stdcode like '5%' then ga.jingz else 0 end) as z11,");
+		gdhwxzcclqkb.append("    sum(case when to_char(ga.jizrq, 'yyyymmdd') <= '20191231' and gjs.stdcode = '04'");
+		gdhwxzcclqkb.append("             and (gja.stdcode like '601%' or gja.stdcode like '602%' or gja.stdcode like '603%' or gja.stdcode like '604%') then ga.jingz else 0 end) as z12 ");
+		gdhwxzcclqkb.append("from gams_assetcard ga ");
+		gdhwxzcclqkb.append("left join md_org md on md.recid = ga.orgunit ");
+		gdhwxzcclqkb.append("left join gams_jc_assetclass gja on gja.recid = ga.zifl ");
+		gdhwxzcclqkb.append("left join gams_jc_syzk gjs on gjs.recid = ga.syzk ");
+		gdhwxzcclqkb.append("where md.stdcode = '000223' and ga.cardstate in ('00','02')");
+		sql_gdhwxzcclqkb = gdhwxzcclqkb.toString();
+		
+	}
+	
+	/**
+	 * 收入支出固定表sql
+	 * @return
+	 */
+	public static String getIncomeAndExpendSql() {
+		return sql_srzcgdb;
+	}
+	
+	/**
+	 * 项目支出决算明细表sql
+	 * @return
+	 */
+	public static String getFinalAccountOfExpendSql() {
+		return sql_xmzcjsmxb;
+	}
+	
+	/**
+	 * 车辆情况表sql
+	 * @return
+	 */
+	public static String getVehicleInformationDetailSql() {
+		return sql_clqkb;
+	}
+	
+	/**
+	 * 固定和无形资产存量情况表sql
+	 * @return
+	 */
+	public static String getAssetsDetailSql() {
+		return sql_gdhwxzcclqkb;
+	}
+	
+}
